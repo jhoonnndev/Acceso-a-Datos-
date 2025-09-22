@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Ejercicio2_4 {
     public static void main(String[] args) throws IOException {
         Scanner teclado = new Scanner(System.in);
-        String respuesta = "";
+        String respuesta = ""; //teclado.nextLine() si no quiero lo del if
         File fichero = new File("ejemplo2_4.txt");
+        FileWriter fw = new FileWriter(fichero);
         while (!respuesta.equals("fin")){
             System.out.print("Escribe una frase: ");
             respuesta = teclado.nextLine();
             if (!respuesta.equals("fin")) {
-                FileWriter fw = new FileWriter(fichero, true);
                 fw.write(respuesta + "\n");
 
                 fw.close();
@@ -21,6 +21,7 @@ public class Ejercicio2_4 {
         BufferedReader br = new BufferedReader(new FileReader(fichero));
         while ((linea = br.readLine()) != null){
             System.out.println(linea);
+            br.close();
         }
     }
 }
